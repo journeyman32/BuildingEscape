@@ -18,9 +18,11 @@ UPositionReport::UPositionReport()
 // Called when the game starts
 void UPositionReport::BeginPlay()
 {
+	FVector ActorLocation = GetOwner()->GetActorLocation();
 	Super::BeginPlay();
 	FString name = GetOwner()->GetName();
-	UE_LOG(LogTemp,Warning,TEXT("Position report reporting for duty on %s"), *name)
+	FString TransformLocation = GetOwner()->GetTransform().GetLocation().ToString();
+	UE_LOG(LogTemp,Warning,TEXT("%s is at %s and transform is %s"), *name, *ActorLocation.ToString(), *TransformLocation)
 	
 }
 
